@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>My Quote List</title><html>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"> 
+    <!-- Bootstrap theme -->
+    <link href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/theme.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+
+  </head>
+  <body>
+    
+
+    <div class="container theme-showcase" role="main">
+
+      <div class="jumbotron">
+        <h1>My Quote List</h1>
+        <a type="button" class="btn btn-link" href="{{ url_for('sign') }}">Add entry</a>
+      </div>
+
+      <div>
+      <table>
+        <tr>
+          <th>Source</th>
+          <th>Quote</th>
+          <th>Notes</th>
+        </tr>
+        {% for entry in result %}
+        
+        <tr>
+          <td class="tds">
+            {{entry.source}}
+          </td>
+          <td>
+          {{entry.quote}}
+          </td>
+          <td class="tds">
+          {{entry.note}}
+          </td>
+          <td class="td2">
+            <form method="POST" action="./delete" style="display: inline">
+              <input type="hidden" value="{{entry.source}}" name="source">
+              <input type="hidden" value="{{entry.quote}}" name="quote">
+              <input type="hidden" value="{{entry.note}}" name="note">
+              <input type="submit" value="Delete">
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+
+      </table>
+    </div>
+  </body>
+</html>
