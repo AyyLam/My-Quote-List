@@ -5,7 +5,7 @@ To initialize and maintain a database of your quotes:
 1) Install python
 2) Open up command prompt and navigate to the location of My Quote List
 3) Start a Python shell in the directory of My Quote List by typing in "python"
-4) Run the following commands in the shell:
-   >>> from myquotelist import db
-   >>> db.create_all()
-   >>> exit() 
+4) Run the following commands in the shell in order:
+   a) from myquotelist import db
+   b) b.create_all()
+   c) exit() 
